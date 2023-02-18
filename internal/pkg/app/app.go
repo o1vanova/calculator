@@ -19,7 +19,10 @@ func New() (*App, error) {
 	app.endPoint = endpoint.New(simpleService)
 	app.echoSvc = echo.New()
 
+	app.echoSvc.GET("/", app.endPoint.Info)
 	app.echoSvc.GET("/plus", app.endPoint.Plus)
+	app.echoSvc.GET("/minus", app.endPoint.Minus)
+	app.echoSvc.GET("/multify", app.endPoint.Multify)
 
 	return app, nil
 }
